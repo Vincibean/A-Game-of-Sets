@@ -23,9 +23,11 @@ object Neq {
       (hs1 zip hs2).map(mix).toList.reduce(_ && _)
     }
 
+  def anyNeq[T]: Neq[T] = (x: T, y: T) => x != y
+
 }
 
-trait Neq[A] {
+trait Neq[-A] {
 
   def neq(x: A, y: A): Boolean
 
