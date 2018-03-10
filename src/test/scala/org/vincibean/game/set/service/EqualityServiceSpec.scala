@@ -1,6 +1,6 @@
 package org.vincibean.game.set.service
 
-import org.scalacheck.{Arbitrary, Gen, Prop}
+import org.scalacheck.{Arbitrary, Prop}
 import org.specs2.matcher.MatchResult
 import org.specs2.scalacheck.{
   ScalaCheckFunction1,
@@ -9,11 +9,13 @@ import org.specs2.scalacheck.{
 }
 import org.specs2.specification.core.SpecStructure
 import org.specs2.{ScalaCheck, Specification}
+import org.vincibean.game.set.ArbitraryCards
 import org.vincibean.game.set.lexical._
 
 class EqualityServiceSpec
     extends Specification
     with ScalaCheck
+    with ArbitraryCards
     with EqualityService {
   override def is: SpecStructure =
     s2"""
@@ -55,27 +57,6 @@ class EqualityServiceSpec
         equal3(x, y, z) must beFalse
       }
     }
-  }
-
-  implicit val shapes: Arbitrary[Shape] = Arbitrary(
-    Gen.oneOf(Ovals, Diamonds, Squiggles))
-
-  implicit val colors: Arbitrary[Color] = Arbitrary(
-    Gen.oneOf(Red, Purple, Green))
-
-  implicit val numbers: Arbitrary[Number] = Arbitrary(
-    Gen.oneOf(One, Two, Three))
-
-  implicit val shadings: Arbitrary[Shading] = Arbitrary(
-    Gen.oneOf(Solid, Striped, Outline))
-
-  implicit val cards: Arbitrary[Card] = Arbitrary {
-    for {
-      s <- Arbitrary.arbitrary[Shape]
-      c <- Arbitrary.arbitrary[Color]
-      n <- Arbitrary.arbitrary[Number]
-      sd <- Arbitrary.arbitrary[Shading]
-    } yield Card(s, c, n, sd)
   }
 
 }
