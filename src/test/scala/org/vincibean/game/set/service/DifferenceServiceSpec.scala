@@ -30,6 +30,7 @@ class DifferenceServiceSpec
          pass the equality of instances (Cards) ${equalityOf[Card]}
          fail with 'almost' equal instances (Cards) $e1
          fail with different instances (Cards) ${disequalityOf[Card]}
+         fail with empty case classes ${equalityOf[Empty]}
       """
 
   def e1: MatchResult[Boolean] = {
@@ -84,5 +85,8 @@ class DifferenceServiceSpec
       sd <- Arbitrary.arbitrary[Shading]
     } yield Card(s, c, n, sd)
   }
+
+  case class Empty()
+  implicit val empties: Arbitrary[Empty] = Arbitrary(Gen.const(Empty()))
 
 }
