@@ -20,7 +20,7 @@ object Neq {
     (x: C, y: C) => {
       val hs1 = Generic[C].to(x)
       val hs2 = Generic[C].to(y)
-      (hs1 zip hs2).map(mix).toList.reduce(_ && _)
+      (hs1 zip hs2).map(mix).toList.reduceOption(_ && _).getOrElse(false)
     }
 
   def anyNeq[T]: Neq[T] = (x: T, y: T) => x != y
