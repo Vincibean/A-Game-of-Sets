@@ -1,7 +1,11 @@
 package org.vincibean.game.set
 
 import org.scalacheck.{Arbitrary, Gen}
-import org.vincibean.game.set.lexical._
+import org.vincibean.game.set.lexical.Color._
+import org.vincibean.game.set.lexical.Number._
+import org.vincibean.game.set.lexical.Shading._
+import org.vincibean.game.set.lexical.{Card, Color, Shading, Shape, Number}
+import org.vincibean.game.set.lexical.Shape._
 
 trait ArbitraryCards {
 

@@ -4,12 +4,11 @@ import org.vincibean.game.set.lexical._
 
 trait DeckService {
 
-  // TODO Shapeless?
   val singleDeck: Seq[Card] = for {
-    shape <- Seq(Ovals, Squiggles, Diamonds)
-    color <- Seq(Red, Purple, Green)
-    number <- Seq(One, Two, Three)
-    shading <- Seq(Solid, Striped, Outline)
+    shape <- Shape.values
+    color <- Color.values
+    number <- Number.values
+    shading <- Shading.values
   } yield Card(shape, color, number, shading)
 
   // TODO shuffle

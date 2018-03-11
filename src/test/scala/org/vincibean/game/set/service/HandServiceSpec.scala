@@ -3,6 +3,10 @@ package org.vincibean.game.set.service
 import org.specs2.Specification
 import org.specs2.matcher.MatchResult
 import org.specs2.specification.core.SpecStructure
+import org.vincibean.game.set.lexical.Color.{Green, Purple, Red}
+import org.vincibean.game.set.lexical.Number.{One, Three, Two}
+import org.vincibean.game.set.lexical.Shading.{Outline, Solid, Striped}
+import org.vincibean.game.set.lexical.Shape.{Diamonds, Ovals, Squiggles}
 import org.vincibean.game.set.lexical._
 
 class HandServiceSpec extends Specification with HandService {
