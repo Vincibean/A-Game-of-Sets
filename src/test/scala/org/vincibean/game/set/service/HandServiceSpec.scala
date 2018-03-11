@@ -5,7 +5,7 @@ import org.specs2.matcher.MatchResult
 import org.specs2.specification.core.SpecStructure
 import org.vincibean.game.set.lexical._
 
-class PlayServiceSpec extends Specification with PlayService {
+class HandServiceSpec extends Specification with HandService {
   override def is: SpecStructure =
     s2"""
         isSet should
