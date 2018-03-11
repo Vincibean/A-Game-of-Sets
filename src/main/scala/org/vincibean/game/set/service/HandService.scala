@@ -2,7 +2,6 @@ package org.vincibean.game.set.service
 
 import org.vincibean.game.set.lexical._
 
-// TODO check if slang-free name
 trait HandService extends EqualityService with DifferenceService {
 
   def isSet(x: Hand): Boolean = {
