@@ -2,7 +2,11 @@ package org.vincibean.game.set.service
 
 import org.scalacheck.{Arbitrary, Gen, Prop}
 import org.specs2.matcher.MatchResult
-import org.specs2.scalacheck.{ScalaCheckFunction1, ScalaCheckFunction2, ScalaCheckFunction3}
+import org.specs2.scalacheck.{
+  ScalaCheckFunction1,
+  ScalaCheckFunction2,
+  ScalaCheckFunction3
+}
 import org.specs2.specification.core.SpecStructure
 import org.specs2.{ScalaCheck, Specification}
 import org.vincibean.game.set.ArbitraryCards
