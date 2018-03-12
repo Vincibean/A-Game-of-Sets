@@ -9,8 +9,7 @@ package object set {
   type PositiveNatural = Int Refined Positive
 
   implicit class SeqOps[A](val as: Seq[A]) extends AnyVal {
-    def findAt(i: Int): Option[A] =
-      if (as.isDefinedAt(i)) Option(as(i)) else None
+    def findAt(i: Int): Option[A] = as.lift(i)
   }
 
 }
