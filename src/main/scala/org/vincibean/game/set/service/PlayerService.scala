@@ -4,8 +4,8 @@ import org.vincibean.game.set.lexical.Player
 
 trait PlayerService {
 
-  def assignOnePoint(p: Player): Player = p.copy(score = p.score.increase)
+  def assignOnePointTo(p: Player): Player = p.copy(score = p.score.increase)
 
-  def removeOnePoint(p: Player): Player = p.copy(score = p.score.decrease)
+  def removeOnePointFrom(p: Player): Player = p.copy(score = p.score.decrease)
 
 }

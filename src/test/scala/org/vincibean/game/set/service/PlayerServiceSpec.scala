@@ -19,10 +19,10 @@ class PlayerServiceSpec
       """
 
   def p1: ScalaCheckFunction1[Int, MatchResult[Int]] = prop { (i: Int) =>
-    assignOnePoint(Player("", Score(i))).score.i must beEqualTo(i + 1)
+    assignOnePointTo(Player("", Score(i))).score.i must beEqualTo(i + 1)
   }
 
   def p2: ScalaCheckFunction1[Int, MatchResult[Int]] = prop { (i: Int) =>
-    removeOnePoint(Player("", Score(i))).score.i must beEqualTo(i - 1)
+    removeOnePointFrom(Player("", Score(i))).score.i must beEqualTo(i - 1)
   }
 }

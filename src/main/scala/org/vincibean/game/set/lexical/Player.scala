@@ -4,8 +4,8 @@ import org.vincibean.game.set.service.PlayerService
 
 object Player extends PlayerService {
   implicit class PlayerOps(val p: Player) extends AnyVal {
-    def winOnePoint: Player = assignOnePoint(p)
-    def loseOnePoint: Player = removeOnePoint(p)
+    def winOnePoint: Player = assignOnePointTo(p)
+    def loseOnePoint: Player = removeOnePointFrom(p)
   }
 }
 
