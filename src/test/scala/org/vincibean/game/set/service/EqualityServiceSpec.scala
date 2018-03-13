@@ -1,5 +1,7 @@
 package org.vincibean.game.set.service
 
+import cats.Eq
+import cats.implicits._
 import org.scalacheck.{Arbitrary, Prop}
 import org.specs2.matcher.MatchResult
 import org.specs2.scalacheck.{
@@ -26,23 +28,19 @@ class EqualityServiceSpec
          test the equality of instances (Strings) ${equalityOf[String]}
          fail with 'almost' equal instances (Strings) ${almostEqualityOf[String]}
          fail with different instances (Strings) ${disequalityOf[String]}
-         test the equality of objects (Colors) ${equalityOf[Color]}
-         fail with 'almost' equal objects (Colors) ${almostEqualityOf[Color]}
-         fail with different objects (Colors) ${disequalityOf[Color]}
          test the equality of instances (Cards) ${equalityOf[Card]}
          fail with 'almost' equal instances (Cards) ${almostEqualityOf[Card]}
          fail with different instances (Cards) ${disequalityOf[Card]}
       """
 
-  def equalityOf[T](implicit ev: Arbitrary[T])
+  def equalityOf[T: Eq: Arbitrary]
     : ScalaCheckFunction1[T, MatchResult[Boolean]] = {
     prop { (i: T) =>
       equal3(i, i, i) must beTrue
     }
   }
 
-  def almostEqualityOf[T](
-      implicit ev: Arbitrary[T]): ScalaCheckFunction2[T, T, Prop] = {
+  def almostEqualityOf[T: Eq: Arbitrary]: ScalaCheckFunction2[T, T, Prop] = {
     prop { (x: T, y: T) =>
       (x != y) ==> {
         equal3(x, y, y) must beFalse
@@ -50,7 +48,7 @@ class EqualityServiceSpec
     }
   }
 
-  def disequalityOf[T](
+  def disequalityOf[T: Eq](
       implicit ev: Arbitrary[T]): ScalaCheckFunction3[T, T, T, Prop] = {
     prop { (x: T, y: T, z: T) =>
       ((x != y) && (y != z) && (x != z)) ==> {

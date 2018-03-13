@@ -15,7 +15,6 @@ trait DeckService extends DifferenceService {
     shading <- Shading.values
   } yield Card(shape, color, number, shading)
 
-  // TODO shuffle
   def deckFrom(decksNum: Natural): Deck = {
     val decks =
       (0 until decksNum).map(_ => singleDeck).foldLeft(Seq.empty[Card])(_ ++ _)
