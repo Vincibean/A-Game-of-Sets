@@ -1,8 +1,7 @@
 package org.vincibean.game.set.service
 
-import cats.Order
-import org.vincibean.game.set.lexical.Player
 import cats.syntax.order._
+import org.vincibean.game.set.lexical.Player
 
 trait PlayerService {
 
@@ -10,7 +9,7 @@ trait PlayerService {
 
   def removeOnePointFrom(p: Player): Player = p.copy(score = p.score.decrease)
 
-  def findWinner(p1: Player, p2: Player)(implicit ev: Order[Player]): Player =
-    p1 max p2
+  def findWinner(p1: Player, p2: Player, ps: Player*): Player =
+    ps.foldLeft(p1 max p2)(_ max _)
 
 }

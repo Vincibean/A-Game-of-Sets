@@ -8,8 +8,9 @@ object Score extends ScoreService {
     def increase: Score = addOnePoint(s)
     def decrease: Score = removeOnePoint(s)
   }
-  implicit def scoreOrder(implicit ev: Order[Int]): Order[Score] =
-    (x: Score, y: Score) => ev.compare(x.i, y.i)
+
+  implicit def scoreOrder: Order[Score] =
+    (x: Score, y: Score) => x.i.compare(y.i)
 }
 
 final case class Score(i: Int) extends AnyVal
